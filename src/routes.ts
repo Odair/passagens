@@ -1,9 +1,15 @@
-import { Router } from "express";
+import { Router } from 'express'
+import { routeController } from './IoC'
 
-const router = Router();
+const router = Router()
 
-router.get("/healthcheck", (request, response) => {
-  return response.status(200).json({ message: "Service is online" });
-});
+router.get('/healthcheck', (request, response) => {
+  return response.status(200).json({ message: 'Service is online' })
+})
 
-export { router };
+router.post('/route', (request, response) => {
+  routeController.create(request, response)
+  return response.status(201).json(response)
+})
+
+export { router }
