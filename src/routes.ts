@@ -8,8 +8,11 @@ router.get('/healthcheck', (request, response) => {
 })
 
 router.post('/route', (request, response) => {
-  routeController.create(request, response)
-  return response.status(201).json(response)
+  return routeController.create(request, response)
+})
+
+router.get('/quote/:from/:to', (request, response) => {
+  return routeController.getMinorPriceRoute(request, response)
 })
 
 export { router }

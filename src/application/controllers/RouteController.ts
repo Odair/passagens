@@ -13,9 +13,9 @@ export class RouteController {
     try {
       const route: IRouteDTO = request.body
 
-      this.routeService.createRoute(route)
+      await this.routeService.createRoute(route)
 
-      return response.status(201).json('')
+      return response.status(201).json(route)
     } catch (error) {
       return response.status(400).json({ msg: error.message })
     }
@@ -23,7 +23,10 @@ export class RouteController {
 
   async getMinorPriceRoute (request: Request, response: Response): Promise<Response> {
     try {
-      return response.status(200).json('')
+      const { from, to } = request.params
+
+      const result = await this.routeService.getMinorPriceRoute({ from, to })
+      return response.status(200).json(result)
     } catch (error) {
       return response.status(400).json({ msg: error.message })
     }

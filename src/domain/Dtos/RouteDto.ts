@@ -1,5 +1,5 @@
-export interface IRouteDTO{
-    from:string,
-    to:string,
-    price:number
+export interface IRouteDTO {
+    from: string,
+    to: string,
+    price: number
 }

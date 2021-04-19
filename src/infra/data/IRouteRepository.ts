@@ -1,5 +1,6 @@
-import { IRouteDTO } from '../../domain/Dtos/RouteDto'
+import { Route } from '../../domain/Entities/Route'
 
 export interface IRouteRepository {
-    save(route: IRouteDTO): Promise<void>
+    save(route: Route): Promise<void>
+    findAll(): Promise<Route[]>
 }
